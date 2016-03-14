@@ -38,10 +38,10 @@ public class HomeActivity extends Activity implements View.OnClickListener {
                     break;
                 }
                 case R.id.location_button: {
-                    SmsManager sms = SmsManager.getDefault();
-                    sms.sendTextMessage("+66891053596", null, "location", null, null);
+                    //SmsManager sms = SmsManager.getDefault();
+                    //sms.sendTextMessage("+66891053596", null, "location", null, null);
 
-                    Intent intent = new Intent(LoginActivity.this, MapsActivity.class);
+                    Intent intent = new Intent(HomeActivity.this, MapsActivity.class);
                     startActivity(intent);
 
                     break;

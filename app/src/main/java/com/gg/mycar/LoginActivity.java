@@ -351,7 +351,23 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
+    public void click(View v) {
+        Intent intent;
+        switch(v.getId()) {
+            case R.id.signup:
+            intent = new Intent(this, SignupActivity.class);
+                startActivity(intent);
+                break;
+            /*case R.id.forgetpassword: // R.id.textView2
+                intent = new Intent(this, ResetPassword.class);
+                break;
+            case R.id.feed: // R.id.textView3
+                intent = new Intent(); */
+
+        }
+        //startActivity(intent);
+
+    }
+
 }
-
-
 
