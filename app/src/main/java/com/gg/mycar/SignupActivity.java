@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 public class SignupActivity extends Activity {
 
-    EditText editTextUserName, editTextPassword, editTextConfirmPassword;
+    EditText editTextUserName, editTextPassword, editTextConfirmPassword, deviceNumber;
     Button btnCreateAccount;
     Context context = this;
     LoginDataBaseAdapter loginDataBaseAdapter;
@@ -29,6 +29,7 @@ public class SignupActivity extends Activity {
         editTextUserName = (EditText) findViewById(R.id.editTextUserName);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         editTextConfirmPassword = (EditText) findViewById(R.id.editTextConfirmPassword);
+        deviceNumber = (EditText) findViewById(R.id.deviceNumber);
 
         btnCreateAccount = (Button) findViewById(R.id.buttonCreateAccount);
         btnCreateAccount.setOnClickListener(new View.OnClickListener() {
@@ -37,8 +38,9 @@ public class SignupActivity extends Activity {
 
                 String userName = editTextUserName.getText().toString();
                 String password = editTextPassword.getText().toString();
-                String confirmPassword = editTextConfirmPassword.getText()
-                        .toString();
+                String confirmPassword = editTextConfirmPassword.getText().toString();
+                String device = deviceNumber.getText().toString();
+
                 if (userName.equals("") || password.equals("")
                         || confirmPassword.equals("")) {
 
@@ -53,13 +55,13 @@ public class SignupActivity extends Activity {
                     return;
                 } else {
 
-                    loginDataBaseAdapter.insertEntry(userName, password);
+                    loginDataBaseAdapter.insertEntry(userName, password, device);
                     Toast.makeText(getApplicationContext(),
                             "Account Successfully Created ", Toast.LENGTH_LONG)
                             .show();
-                    Intent i = new Intent(SignupActivity.this,
-                            HomeActivity.class);
-                    startActivity(i);
+                    Intent intent = new Intent(SignupActivity.this,
+                            LoginActivity.class);
+                    startActivity(intent);
                     finish();
 
                 }

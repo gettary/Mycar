@@ -18,7 +18,7 @@ public class LoginDataBaseAdapter {
     public static final int NAME_COLUMN = 1;
     static final String DATABASE_CREATE = "create table " + "LOGIN" + "( "
             + "ID" + " integer primary key autoincrement,"
-            + "USERNAME  text,PASSWORD text); ";
+            + "USERNAME  text,PASSWORD text, DEVICENUMBER text); ";
     public SQLiteDatabase db;
     private final Context context;
     private DataBaseHelper dbHelper;
@@ -42,10 +42,11 @@ public class LoginDataBaseAdapter {
         return db;
     }
 
-    public void insertEntry(String userName, String password) {
+    public void insertEntry(String userName, String password, String device) {
         ContentValues newValues = new ContentValues();
         newValues.put("USERNAME", userName);
         newValues.put("PASSWORD", password);
+        newValues.put("DEVICENUMBER", device);
         db.insert("LOGIN", null, newValues);
 
     }
@@ -71,10 +72,11 @@ public class LoginDataBaseAdapter {
         return password;
     }
 
-    public void updateEntry(String userName, String password) {
+    public void updateEntry(String userName, String password, String device) {
         ContentValues updatedValues = new ContentValues();
         updatedValues.put("USERNAME", userName);
         updatedValues.put("PASSWORD", password);
+        updatedValues.put("DEVICENUMBER", device);
 
         String where = "USERNAME = ?";
         db.update("LOGIN", updatedValues, where, new String[] { userName });
